@@ -1,0 +1,14 @@
+@import 'style/variables';
+
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  &__form {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
