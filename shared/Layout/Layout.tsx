@@ -10,10 +10,10 @@ import './Layout.scss';
 
 import {IBemHocOutput} from '@steroidsjs/core/hoc/bem';
 import Header from '@steroidsjs/core/ui/layout/Header';
-import Nav from '../../../react/ui/nav/Nav';
-import {STATUS_ACCESS_DENIED} from '../../../react/hoc/layout';
+import Nav from '@steroidsjs/core/ui/nav/Nav';
+import {STATUS_ACCESS_DENIED} from '@steroidsjs/core/hoc/layout';
 import Login from '../Login';
-import {getRoutesMap} from '../../../react/reducers/router';
+import {getRoutesMap} from '@steroidsjs/core/reducers/router';
 
 interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
     isInitialized?: boolean,
