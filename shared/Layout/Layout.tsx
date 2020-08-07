@@ -18,6 +18,7 @@ import {getRoutesMap} from '@steroidsjs/core/reducers/router';
 interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
     isInitialized?: boolean,
     user?: any,
+    loginUrl?: string,
 }
 
 @bem('Layout')
@@ -66,7 +67,10 @@ export default class Layout extends React.PureComponent<ILayoutProps> {
         switch (this.props.status) {
             case STATUS_ACCESS_DENIED:
                 return (
-                    <Login indexRoute={false}/>
+                    <Login
+                        indexRoute={false}
+                        loginUrl={this.props.loginUrl}
+                    />
                 );
 
             case STATUS_LOADING:
