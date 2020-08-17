@@ -12,7 +12,7 @@ import Header from '@steroidsjs/core/ui/layout/Header';
 import {STATUS_ACCESS_DENIED} from '@steroidsjs/core/hoc/layout';
 import Login from '../Login';
 import {getRoutesMap} from '@steroidsjs/core/reducers/router';
-import Tree from '../../../react/ui/nav/Tree';
+import Tree from '@steroidsjs/core/ui/nav/Tree';
 
 export interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
     title?: string,
