@@ -1,5 +1,4 @@
 import React from 'react';
-import _get from 'lodash-es/get';
 import _values from 'lodash-es/values';
 import {Notifications} from '@steroidsjs/core/ui/layout';
 import {ILayoutHocOutput, STATUS_LOADING, STATUS_OK} from '@steroidsjs/core/hoc/layout';
@@ -10,12 +9,16 @@ import './Layout.scss';
 
 import {IBemHocOutput} from '@steroidsjs/core/hoc/bem';
 import Header from '@steroidsjs/core/ui/layout/Header';
-import Nav from '@steroidsjs/core/ui/nav/Nav';
 import {STATUS_ACCESS_DENIED} from '@steroidsjs/core/hoc/layout';
 import Login from '../Login';
 import {getRoutesMap} from '@steroidsjs/core/reducers/router';
+import Tree from '../../../react/ui/nav/Tree';
 
-interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
+export interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
+    title?: string,
+}
+
+interface ILayoutPrivateProps {
     isInitialized?: boolean,
     user?: any,
 }
@@ -26,20 +29,16 @@ interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
     routes: getRoutesMap(state),
 }))
 @layout(props => {
-    const models = props.models || [];
+    let models = props.models || [];
     _values(props.routes).forEach(route => {
-        ['model', 'searchModel'].forEach(key => {
-            if (route[key]) {
-                models.push(route[key]);
-            }
-        });
+        models = models.concat(route.models || []);
     });
 
     return props.http.post('/api/v1/init', {
         models: models.length > 0 ? models : undefined,
     });
 })
-export default class Layout extends React.PureComponent<ILayoutProps> {
+export default class Layout extends React.PureComponent<ILayoutProps & ILayoutPrivateProps> {
 
     componentDidUpdate(prevProps) {
     }
@@ -50,7 +49,7 @@ export default class Layout extends React.PureComponent<ILayoutProps> {
             <div className={bem.block()}>
                 <Header
                     logo={{
-                        title: '',
+                        title: this.props.title,
                     }}
                     className={bem.element('header')}
                 />
@@ -74,14 +73,14 @@ export default class Layout extends React.PureComponent<ILayoutProps> {
 
             case STATUS_OK:
                 return (
-                    <div className={bem.element('wrapper')}>
-                        <div className={bem.element('sidebar')}>
-                            <Nav
-                                items='root'
-                            />
-                        </div>
-                        <div className={bem.element('content')}>
-                            {this.props.children}
+                    <div className={bem(bem.element('wrapper'), 'container-fluid')}>
+                        <div className='row'>
+                            <nav className={bem(bem.element('sidebar'), 'col-md-3 col-lg-2 d-md-block bg-light sidebar collapse')}>
+                                <Tree items='root'/>
+                            </nav>
+                            <main role='main' className={bem(bem.element('content'), 'col-md-9 ml-sm-auto col-lg-10 px-md-4')}>
+                                {this.props.children}
+                            </main>
                         </div>
                     </div>
                 );
