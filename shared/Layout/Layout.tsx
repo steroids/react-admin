@@ -21,6 +21,7 @@ export interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
 interface ILayoutPrivateProps {
     isInitialized?: boolean,
     user?: any,
+    loginUrl?: string,
 }
 
 @bem('Layout')
@@ -65,7 +66,10 @@ export default class Layout extends React.PureComponent<ILayoutProps & ILayoutPr
         switch (this.props.status) {
             case STATUS_ACCESS_DENIED:
                 return (
-                    <Login indexRoute={false}/>
+                    <Login
+                        indexRoute={false}
+                        loginUrl={this.props.loginUrl}
+                    />
                 );
 
             case STATUS_LOADING:
