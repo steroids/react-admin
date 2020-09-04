@@ -41,9 +41,6 @@ interface ILayoutPrivateProps {
 })
 export default class Layout extends React.PureComponent<ILayoutProps & ILayoutPrivateProps> {
 
-    componentDidUpdate(prevProps) {
-    }
-
     render() {
         const bem = this.props.bem;
         return (

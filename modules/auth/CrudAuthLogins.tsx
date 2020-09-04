@@ -41,9 +41,8 @@ export default class CrudAuthLogins extends React.Component<ICrudChildrenProps &
                                 action={`${this.props.restUrl}/${this.props.itemId}/password`}
                                 fields={[
                                     {
-                                        attribute: 'newPassword',
+                                        attribute: 'password',
                                         label: __('Новый пароль'),
-
                                     }
                                 ]}
                                 submitLabel={__('Изменить')}
