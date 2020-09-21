@@ -1,7 +1,7 @@
 import React from 'react';
 import {generateCrud} from '@steroidsjs/core/ui/crud';
 import {MoneyFormatter} from '@steroidsjs/core/ui/format';
-import {EnumFormatter} from '../../react/ui/format';
+import {EnumFormatter} from '@steroidsjs/core/ui/format';
 
 export const ROUTE_BILLING_OPERATIONS = 'billing_operations';
 
