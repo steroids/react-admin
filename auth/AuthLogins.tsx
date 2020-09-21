@@ -10,7 +10,7 @@ import {IFetchHocOutput} from '@steroidsjs/core/hoc/fetch';
 import {listRefresh} from '@steroidsjs/core/actions/list';
 import Detail from '@steroidsjs/core/ui/list/Detail';
 
-export default class CrudAuthLogins extends React.Component<ICrudChildrenProps & IConnectHocOutput & IFetchHocOutput> {
+export default class AuthLogins extends React.Component<ICrudChildrenProps & IConnectHocOutput & IFetchHocOutput> {
 
     render() {
         const loginsGridId = getCrudFormId(this.props, 'logins');

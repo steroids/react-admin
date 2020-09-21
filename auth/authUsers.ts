@@ -1,5 +1,5 @@
 import {generateCrud} from '@steroidsjs/core/ui/crud';
-import CrudAuthLogins from './CrudAuthLogins';
+import AuthLogins from './AuthLogins';
 
 /**
  * Пример раздела "пользователи" для панели администрирования.
@@ -64,7 +64,7 @@ export default generateCrud('auth', {
         logins: {
             label: __('Настройки доступа'),
             icon: 'key',
-            component: CrudAuthLogins,
+            component: AuthLogins,
         },
     }
 });
