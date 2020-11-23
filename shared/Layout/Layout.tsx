@@ -16,12 +16,12 @@ import Tree from '@steroidsjs/core/ui/nav/Tree';
 
 export interface ILayoutProps extends IBemHocOutput, ILayoutHocOutput {
     title?: string,
+    loginUrl?: string,
 }
 
 interface ILayoutPrivateProps {
     isInitialized?: boolean,
     user?: any,
-    loginUrl?: string,
 }
 
 @bem('Layout')
