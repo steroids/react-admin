@@ -1,9 +1,8 @@
 import React from 'react';
 import {generateCrud} from '@steroidsjs/core/ui/crud';
 import {MoneyFormatter} from '@steroidsjs/core/ui/format';
-import AuthLogins from '../auth/AuthLogins';
-import {getCrudGridId, ICrudClickProps} from '../../react/ui/crud/Crud/Crud';
-import {listRefresh} from '../../react/actions/list';
+import {getCrudGridId, ICrudClickProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
+import {listRefresh} from '@steroidsjs/core/actions/list';
 
 export const ROUTE_PAYMENT_ORDERS = 'payment_orders';
 
