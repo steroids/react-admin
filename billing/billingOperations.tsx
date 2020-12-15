@@ -73,7 +73,6 @@ export default generateCrud(ROUTE_BILLING_OPERATIONS, {
                     <MoneyFormatter
                         currency={item.currency.code}
                         scale={item.currency.precision}
-                        precision={item.currency.precision}
                         value={item.delta}
                     />
                 ),
