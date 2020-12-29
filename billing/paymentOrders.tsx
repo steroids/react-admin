@@ -83,6 +83,19 @@ export default generateCrud(ROUTE_PAYMENT_ORDERS, {
                 attribute: 'method.title',
                 label: __('Метод'),
             },
+            {
+                attribute: 'methodParams',
+                label: __('Параметры'),
+                valueView: ({item}) => (
+                    <div>
+                        {Object.keys(item.methodParams || {}).map(key => (
+                            <div key={key}>
+                                {key}: {JSON.stringify(item.methodParams[key])}
+                            </div>
+                        ))}
+                    </div>
+                ),
+            },
             'externalId',
             'createTime',
             'updateTime',
