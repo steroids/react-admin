@@ -6,7 +6,7 @@ import {listRefresh} from '@steroidsjs/core/actions/list';
 
 export const ROUTE_PAYMENT_ORDERS = 'payment_orders';
 
-export default generateCrud(ROUTE_PAYMENT_ORDERS, {
+export const paymentCrudParams = {
     label: __('Платежный шлюз'),
     model: 'steroids.payment.models.PaymentOrder',
     enums: [
@@ -125,4 +125,6 @@ export default generateCrud(ROUTE_PAYMENT_ORDERS, {
             },
         },
     }
-});
+};
+
+export default generateCrud(ROUTE_PAYMENT_ORDERS, paymentCrudParams);
