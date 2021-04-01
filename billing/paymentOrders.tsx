@@ -124,7 +124,7 @@ export const paymentCrudParams = {
         fields: [
             {
                 attribute: 'methodId',
-                component: 'DropDownField', // TODO: items from store
+                component: 'DropDownField',
                 dataProvider: {
                     action: '/api/v1/admin/payment/withdraw-methods',
                     //@todo удалить после того как dataProvider по умолчанию будет использовать get метод
