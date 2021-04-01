@@ -14,9 +14,8 @@ export const paymentCrudParams = {
     ],
     searchModel: 'steroids.payment.forms.PaymentOrdersSearch',
     path: '/admin/billing/payment-orders',
-    restUrl: '/api/v1/admin/payment/orders',
+    restUrl: '/api/v1/admin/payment',
     create: false,
-    update: false,
     delete: false,
     view: false,
     grid: {
@@ -78,6 +77,26 @@ export const paymentCrudParams = {
                     />
                 ),
             },
+            {
+                attribute: 'outAmountRub',
+                label: __('Сумма (шлюз)'),
+                valueView: ({item}) => (item.outAmountRub && (
+                    <MoneyFormatter
+                        value={item.outAmountRub}
+                        currency={'rub'}
+                    />
+                ))
+            },
+            {
+                attribute: 'commissionAmountRub',
+                label: __('Сумма коммиссии'),
+                valueView: ({item}) => (item.commissionAmountRub && (
+                    <MoneyFormatter
+                        value={item.commissionAmountRub}
+                        currency={'rub'}
+                    />
+                ))
+            },
             'status',
             {
                 attribute: 'method.title',
@@ -100,6 +119,29 @@ export const paymentCrudParams = {
             'createTime',
             'updateTime',
         ],
+    },
+    form: {
+        fields: [
+            {
+                attribute: 'methodId',
+                component: 'DropDownField', // TODO: items from store
+                dataProvider: {
+                    action: '/api/v1/admin/payment/withdraw-methods',
+                    //@todo удалить после того как dataProvider по умолчанию будет использовать get метод
+                    onSearch: action => window.SteroidsComponents.http.get(action).then(response => {
+                        if (!response.errors) {
+                            return response.map(item => ({
+                                id: item.id,
+                                label: item.label,
+                            }))
+                        }
+
+                        return response;
+                    }),
+                },
+                autoFetch: true
+            }
+        ]
     },
     items: {
         accept: {
