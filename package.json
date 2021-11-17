@@ -17,13 +17,12 @@
     "url": "https://github.com/steroids/react-admin/issues"
   },
   "dependencies": {
+    "@steroidsjs/core": "2.1.*",
+    "@steroidsjs/bootstrap": "2.1.*",
     "@fortawesome/fontawesome-free": "^5.14.0"
   },
   "devDependencies": {
-    "copyfiles": "^2.4.1"
-  },
-  "peerDependencies": {
-    "@steroidsjs/core": "2.1.*",
-    "@steroidsjs/bootstrap": "2.1.*"
+    "copyfiles": "^2.4.1",
+    "typescript": "^4.3.4"
   }
 }

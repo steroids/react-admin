@@ -11,6 +11,9 @@
       "@steroidsjs/core/*": [
         "../react/src/*"
       ],
+      "@steroidsjs/bootstrap/*": [
+        "../react-bootstrap/src/*"
+      ]
     },
     "lib": [
       "DOM",
