@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {reset} from 'redux-form';
+import {formReset} from '@steroidsjs/core/actions/form';
 import Form from '@steroidsjs/core/ui/form/Form/Form';
 import {IConnectHocOutput} from '@steroidsjs/core/hoc/connect';
 import {ICrudChildrenProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
@@ -50,7 +50,7 @@ export default class BillingManualOperation extends React.Component<ICrudChildre
                     onComplete={() => {
                         this.props.dispatch([
                             showNotification(__('Операция создана.'), 'success'),
-                            reset(formId),
+                            formReset(formId),
                         ]);
                     }}
                 />

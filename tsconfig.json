@@ -26,7 +26,6 @@
   "include": [
     "./src/**/*",
     "../react/src/index.d.ts",
-    "@steroids/core/index.d.ts"
   ],
   "exclude": [
     "node_modules",

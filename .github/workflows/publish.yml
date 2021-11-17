@@ -10,9 +10,7 @@ jobs:
           node-version: 12
       - run: yarn
       - run: yarn upgrade @steroidsjs/core
-      - run: yarn tsc
-      - run: yarn copyfiles ./{package.json,LICENSE,README.md} dist
-      - run: yarn copyfiles -u 1 "src/**/*.scss" dist
+      - run: yarn build
       - uses: JS-DevTools/npm-publish@v1
         with:
           package: ./dist/package.json
