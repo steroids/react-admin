@@ -1,0 +1,1 @@
+/// <reference types="@steroidsjs/core/index.d.ts" />

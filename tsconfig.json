@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "declaration": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "outDir": "./dist",
     "paths": {
       "@steroidsjs/core/*": [
