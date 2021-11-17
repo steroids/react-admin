@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "isolatedModules": true,
+    "outDir": "./dist",
+    "paths": {
+      "@steroidsjs/core/*": [
+        "../react/src/*"
+      ],
+    },
+    "lib": [
+      "DOM",
+      "ES2016"
+    ],
+    "types": [
+      "node"
+    ],
+  },
+  "include": [
+    "./src/**/*",
+    "../react/src/index.d.ts"
+  ]
+}

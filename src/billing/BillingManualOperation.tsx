@@ -2,7 +2,7 @@ import * as React from 'react';
 import {reset} from 'redux-form';
 import Form from '@steroidsjs/core/ui/form/Form/Form';
 import {IConnectHocOutput} from '@steroidsjs/core/hoc/connect';
-import {getCrudFormId, ICrudChildrenProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
+import {ICrudChildrenProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
 import {showNotification} from '@steroidsjs/core/actions/notifications';
 import {IFetchHocOutput} from '@steroidsjs/core/hoc/fetch';
 import {DropDownField} from '@steroidsjs/core/ui/form';
@@ -10,7 +10,7 @@ import {DropDownField} from '@steroidsjs/core/ui/form';
 export default class BillingManualOperation extends React.Component<ICrudChildrenProps & IConnectHocOutput & IFetchHocOutput> {
 
     render() {
-        const formId = getCrudFormId(this.props, 'balance-change');
+        const formId = this.props.form.formId + '_balance-change';
         return (
             <div>
                 <h2>{__('Создание операции по счету')}</h2>

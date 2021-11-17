@@ -1,7 +1,7 @@
 import React from 'react';
 import {generateCrud} from '@steroidsjs/core/ui/crud';
 import {MoneyFormatter} from '@steroidsjs/core/ui/format';
-import {getCrudGridId, ICrudClickProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
+import {ICrudClickProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
 import {listRefresh} from '@steroidsjs/core/actions/list';
 
 export const ROUTE_PAYMENT_ORDERS = 'payment_orders';
@@ -151,8 +151,8 @@ export const paymentCrudParams = {
             confirm: (e, id) => __('Принять ордер {id}?', {id}),
             onClick: async (e, itemId, item, props: ICrudClickProps) => {
                 e.preventDefault();
-                await props.http.post(`/api/v1/admin/payment/orders/${itemId}/accept`);
-                props.dispatch(listRefresh(getCrudGridId(props)));
+                await props.components.http.post(`/api/v1/admin/payment/orders/${itemId}/accept`);
+                props.components.store.dispatch(listRefresh(props.crudId));
             },
         },
         reject: {
@@ -162,11 +162,12 @@ export const paymentCrudParams = {
             confirm: (e, id) => __('Отклонить ордер {id}?', {id}),
             onClick: async (e, itemId, item, props: ICrudClickProps) => {
                 e.preventDefault();
-                await props.http.post(`/api/v1/admin/payment/orders/${itemId}/reject`);
-                props.dispatch(listRefresh(getCrudGridId(props)));
+                await props.components.http.post(`/api/v1/admin/payment/orders/${itemId}/reject`);
+                props.components.store.dispatch(listRefresh(props.crudId));
             },
         },
     }
 };
 
+/* @ts-ignore TODO paymentCrudParams are incompatible with ICrudGeneratorProps*/
 export default generateCrud(ROUTE_PAYMENT_ORDERS, paymentCrudParams);

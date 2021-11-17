@@ -1,37 +1,34 @@
 import * as React from 'react';
-import {reset} from 'redux-form';
+import {formReset} from '@steroidsjs/core/actions/form';
 import Form from '@steroidsjs/core/ui/form/Form/Form';
 import {IConnectHocOutput} from '@steroidsjs/core/hoc/connect';
-import {getCrudFormId, ICrudChildrenProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
+import {ICrudChildrenProps} from '@steroidsjs/core/ui/crud/Crud/Crud';
 import {showNotification} from '@steroidsjs/core/actions/notifications';
 import Grid from '@steroidsjs/core/ui/list/Grid';
 import Controls from '@steroidsjs/core/ui/nav/Controls';
 import {IFetchHocOutput} from '@steroidsjs/core/hoc/fetch';
 import {listRefresh} from '@steroidsjs/core/actions/list';
-import Detail from '@steroidsjs/core/ui/list/Detail';
+import {Detail, DetailItem} from "@steroidsjs/core/ui/content/Detail";
 
 export default class AuthLogins extends React.Component<ICrudChildrenProps & IConnectHocOutput & IFetchHocOutput> {
 
     render() {
-        const loginsGridId = getCrudFormId(this.props, 'logins');
-        const confirmsGridId = getCrudFormId(this.props, 'confirms');
-        const passwordFormId = getCrudFormId(this.props, 'password');
+        const loginsGridId = this.props.form.formId + '_logins';
+        const confirmsGridId = this.props.form.formId + '_confirms';
+        const passwordFormId = this.props.form.formId + '_password';
+
         return (
             <div>
                 <div className='row'>
                     <div className='col-lg-6 col-md-12'>
                         <h2>{__('Пользователь')}</h2>
-                        <Detail
-                            model='steroids.auth.models.AuthLogin'
-                            item={this.props.item}
-                            attributes={[
-                                'id',
-                                'name',
-                                'email',
-                                'role',
-                                'isBanned',
-                            ]}
-                        />
+                        <Detail>
+                            <DetailItem label={'ID'}>{this.props.item.id}</DetailItem>
+                            <DetailItem label={'Name'}>{this.props.item.name}</DetailItem>
+                            <DetailItem label={'Email'}>{this.props.item.email}</DetailItem>
+                            <DetailItem label={'Role'}>{this.props.item.role}</DetailItem>
+                            <DetailItem label={'isBanned'}>{this.props.item.isBanned}</DetailItem>
+                        </Detail>
                     </div>
                     <div className='col-lg-6 col-md-12'>
                         <div className='mb-4'>
@@ -49,7 +46,7 @@ export default class AuthLogins extends React.Component<ICrudChildrenProps & ICo
                                 onComplete={() => {
                                     this.props.dispatch([
                                         showNotification(__('Пароль успешно изменен.'), 'success'),
-                                        reset(passwordFormId),
+                                        formReset(passwordFormId),
                                     ]);
                                 }}
                             />

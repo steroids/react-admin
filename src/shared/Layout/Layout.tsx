@@ -1,7 +1,8 @@
 import React from 'react';
 import _values from 'lodash-es/values';
 import {Notifications} from '@steroidsjs/core/ui/layout';
-import {ILayoutHocOutput, STATUS_LOADING, STATUS_OK} from '@steroidsjs/core/hoc/layout';
+import {ILayoutHocOutput} from '@steroidsjs/core/hoc/layout';
+import {STATUS_LOADING, STATUS_OK, STATUS_ACCESS_DENIED} from '@steroidsjs/core/hooks/useLayout';
 import ModalPortal from '@steroidsjs/core/ui/modal/ModalPortal'
 
 import {bem, components, layout, connect} from '@steroidsjs/core/hoc';
@@ -9,7 +10,6 @@ import './Layout.scss';
 
 import {IBemHocOutput} from '@steroidsjs/core/hoc/bem';
 import Header from '@steroidsjs/core/ui/layout/Header';
-import {STATUS_ACCESS_DENIED} from '@steroidsjs/core/hoc/layout';
 import Login from '../Login';
 import {getRoutesMap} from '@steroidsjs/core/reducers/router';
 import Tree from '@steroidsjs/core/ui/nav/Tree';

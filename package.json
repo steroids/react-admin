@@ -1,6 +1,9 @@
 {
   "name": "@steroidsjs/admin",
-  "version": "2.0.0-beta.17",
+  "version": "2.1.0-beta.1",
+  "scripts": {
+    "build": "tsc && copyfiles ./{package.json,LICENSE,README.md} dist/ && copyfiles -u 1 \"src/**/*.scss\" dist"
+  },
   "description": "",
   "main": "index.js",
   "author": "Vladimir Kozhin <hello@kozhindev.com>",
@@ -15,5 +18,12 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  },
+  "peerDependencies": {
+    "@steroidsjs/core": "2.1.*",
+    "@steroidsjs/bootstrap": "2.1.*"
   }
 }
