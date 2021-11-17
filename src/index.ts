@@ -1,1 +1,1 @@
-/// <reference types="@steroidsjs/core/index.d.ts" />
+/// <reference types="@steroidsjs/core/index" />
