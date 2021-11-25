@@ -29,20 +29,8 @@ interface ILayoutPrivateProps {
 @connect(state => ({
     routes: getRoutesMap(state),
 }))
-@layout(props => {
-    let models = props.models || [];
-    _values(props.routes).forEach(route => {
-        models = models.concat(route.models || []);
-    });
-    let enums = props.enums || [];
-    _values(props.routes).forEach(route => {
-        enums = enums.concat(route.enums || []);
-    });
-
-    return props.http.post('/api/v1/init', {
-        models: models.length > 0 ? models : undefined,
-        enums: enums.length > 0 ? enums : undefined,
-    });
+@layout((props, dispatch, components) => {
+    return components.http.post('/api/v1/init');
 })
 export default class Layout extends React.PureComponent<ILayoutProps & ILayoutPrivateProps> {
 
