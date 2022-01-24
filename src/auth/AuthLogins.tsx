@@ -81,15 +81,21 @@ export default class AuthLogins extends React.Component<ICrudChildrenProps & ICo
                                 },
                                 {
                                     id: 'ban',
-                                    label: __('Блокировать пользователя'),
+                                    label: __('{action} пользователя', {
+                                        action: this.props.item.isBanned ? 'Разблокировать' : 'Блокировать'
+                                    }),
                                     icon: 'ban',
-                                    disabled: !!this.props.item.isBanned,
-                                    confirm: __('Заблокировать пользователя "{name}"?', {
+                                    confirm: __('{action} пользователя "{name}"?', {
                                         name: this.props.item.email || this.props.itemId,
+                                        action: this.props.item.isBanned ? 'Разблокировать' : 'Блокировать'
                                     }),
                                     onClick: async () => {
-                                        await this.props.http.post(`${this.props.restUrl}/${this.props.itemId}/ban`);
-                                        this.props.dispatch(showNotification(__('Пользователь заблокирован'), 'warning'));
+                                        await this.props.http.post(
+                                            `${this.props.restUrl}/${this.props.itemId}/${this.props.item.isBanned ? 'unban' : 'ban'}`
+                                        );
+                                        this.props.dispatch(showNotification(__('Пользователь {action}' , {
+                                            action: this.props.item.isBanned ? 'заблокирован' : 'разблокирован'
+                                        }), 'warning'));
                                         this.props.fetchRefresh();
                                     },
                                 },
