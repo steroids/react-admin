@@ -127,17 +127,6 @@ export const paymentCrudParams = {
                 component: 'DropDownField',
                 dataProvider: {
                     action: '/api/v1/admin/payment/withdraw-methods',
-                    //@todo удалить после того как dataProvider по умолчанию будет использовать get метод
-                    onSearch: action => window.SteroidsComponents.http.get(action).then(response => {
-                        if (!response.errors) {
-                            return response.map(item => ({
-                                id: item.id,
-                                label: item.label,
-                            }))
-                        }
-
-                        return response;
-                    }),
                 },
                 autoFetch: true
             }
