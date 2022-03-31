@@ -46,6 +46,7 @@ export default class AuthLogins extends React.Component<ICrudChildrenProps & ICo
                                 fields={[
                                     {
                                         attribute: 'password',
+                                        type: 'password',
                                         label: __('Новый пароль'),
                                     },
                                     {
