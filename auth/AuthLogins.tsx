@@ -47,6 +47,11 @@ export default class AuthLogins extends React.Component<ICrudChildrenProps & ICo
                                     {
                                         attribute: 'password',
                                         label: __('Новый пароль'),
+                                    },
+                                    {
+                                        attribute: 'passwordAgain',
+                                        type: 'password',
+                                        label: __('Повторите пароль'),
                                     }
                                 ]}
                                 submitLabel={__('Изменить')}
