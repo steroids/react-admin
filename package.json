@@ -1,6 +1,6 @@
 {
   "name": "@steroidsjs/admin",
-  "version": "2.1.0-beta.4",
+  "version": "2.1.0-beta.5",
   "scripts": {
     "build": "tsc && copyfiles ./{package.json,LICENSE,README.md} dist/ && copyfiles -u 1 \"src/**/*.scss\" dist"
   },
@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
-    "@steroidsjs/bootstrap": "^2.1.0-beta.1",
-    "@steroidsjs/core": "^2.1.0-beta.1"
+    "@steroidsjs/bootstrap": "^2.1.19",
+    "@steroidsjs/core": "^2.2.89"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
