@@ -26,7 +26,7 @@ export default class Login extends React.PureComponent<ILoginProps> {
                     formId='LoginPage'
                     action={this.props.loginUrl || '/api/v1/admin/auth/login'}
                     onComplete={(values, result) => {
-                        this.props.dispatch(login(result.accessToken, this.props.indexRoute, result));
+                        this.props.dispatch(login(result.accessToken, this.props.indexRoute));
                     }}
                     className={bem.element('form')}
                 >
